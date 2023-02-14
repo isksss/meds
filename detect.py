@@ -28,7 +28,9 @@ model.conf = 0.75
 
 old_amount = 0
 
-webhook_url  = 'https://discord.com/api/webhooks/1054942193573449728/Ywe5aSujPgHSGU3xK3iWdm5XhP1Lsb0bGcumC0yK7EWr8tkQQ33l2cwFvwsJIXYdGDL8'
+
+
+webhook_url ='YOUR_WEBHOOK_TOKEN' 
 
 dbname = 'meds.db'
 

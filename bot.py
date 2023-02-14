@@ -2,6 +2,7 @@ import discord
 from discord import app_commands
 import os
 import sqlite3
+import sys
 
 dbname = 'meds.db'
 
@@ -10,8 +11,8 @@ intents.message_content = True
 
 # BOT_TOKEN = os.environ['BOT_TOKEN']
 # GUILD_ID = os.environ['GUILD_ID']
-BOT_TOKEN='MTA3MzA0MzE4MjkwMTc5Njg4NA.GkeJmo.YIesiVndTEG89sVmPGX9L_YxTR3mSMppM45WTY'
-GUILD_ID='1054942097897164842'
+BOT_TOKEN='YOUR_TOKEN'
+GUILD_ID='YOUR_GUILD_ID'
 
 MY_GUILD = discord.Object(id=GUILD_ID)
 
@@ -29,7 +30,8 @@ client = MyClient(intents=intents)
 
 @client.tree.command()
 async def test(interaction: discord.Interaction, text: str):
-    await interaction.response.send_message(f'test text:{text}')
+    await interaction.response.send_message(f'BOT終了します。')
+    sys.exit()
 
 @client.tree.command()
 async def add(interaction: discord.Interaction, hour: str, min: str, num: str):
@@ -43,7 +45,10 @@ async def add(interaction: discord.Interaction, hour: str, min: str, num: str):
     
     conn = sqlite3.connect(dbname)
     cur = conn.cursor()
-    sql = f'insert into time(time, amount) values ({h}{m}, {n})'
+   # sql = f'insert into time(time, amount) values ()'
+
+
+    sql = f'insert into time(amount, time) values ({h}{m}, {n})' 
     print(sql)
     cur.execute(sql)
     conn.commit()
